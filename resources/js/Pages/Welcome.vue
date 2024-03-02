@@ -1,22 +1,28 @@
-<script setup>
-import { Head, Link } from '@inertiajs/vue3';
+<script>
+import {Head, Link} from '@inertiajs/vue3';
 
-defineProps({
-    canLogin: {
-        type: Boolean,
+export default {
+    components: {
+        Head,
+        Link,
     },
-    canRegister: {
-        type: Boolean,
+    props: {
+        canLogin: {
+            type: Boolean,
+        },
+        canRegister: {
+            type: Boolean,
+        },
+        laravelVersion: {
+            type: String,
+            required: true,
+        },
+        phpVersion: {
+            type: String,
+            required: true,
+        },
     },
-    laravelVersion: {
-        type: String,
-        required: true,
-    },
-    phpVersion: {
-        type: String,
-        required: true,
-    },
-});
+};
 </script>
 
 <template>

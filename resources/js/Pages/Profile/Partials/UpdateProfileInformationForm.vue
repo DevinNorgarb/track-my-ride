@@ -1,25 +1,40 @@
-<script setup>
+<script>
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Link, useForm, usePage } from '@inertiajs/vue3';
+import {Link, useForm, usePage} from '@inertiajs/vue3';
 
-defineProps({
-    mustVerifyEmail: {
-        type: Boolean,
+export default {
+    components: {
+        InputError,
+        InputLabel,
+        PrimaryButton,
+        TextInput,
+        Link,
     },
-    status: {
-        type: String,
+    props: {
+        mustVerifyEmail: {
+            type: Boolean,
+        },
+        status: {
+            type: String,
+        },
     },
-});
+    setup() {
+        const user = usePage().props.auth.user;
 
-const user = usePage().props.auth.user;
+        const form = useForm({
+            name: user.name,
+            email: user.email,
+        });
 
-const form = useForm({
-    name: user.name,
-    email: user.email,
-});
+        return {
+            user,
+            form,
+        };
+    },
+};
 </script>
 
 <template>

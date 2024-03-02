@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
+use phpDocumentor\Reflection\Location;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -15,9 +16,11 @@ use Illuminate\Queue\SerializesModels;
  */
 class LocationUpdated implements ShouldBroadcast
 {
-    use Dispatchable,InteractsWithSockets,SerializesModels;
+    use Dispatchable;
+    use SerializesModels;
+    use InteractsWithSockets;
 
-    public $location;
+    public Location $location;
 
     public function __construct(Location $location)
     {
