@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\CoordinateCreated;
 use Illuminate\Auth\Events\Registered;
+use App\Listeners\HandleCoordinateCreated;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -18,6 +20,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+            // Other events...
+            CoordinateCreated::class => [
+                HandleCoordinateCreated::class,
+            ],
+
     ];
 
     /**

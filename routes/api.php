@@ -19,4 +19,9 @@
     });
 
     Route::post('/rides','RideController@store');
-    Route::post('/rides/{ride}/locations','LocationController@store');
+
+// routes/web.php or routes/api.php
+
+    use App\Http\Controllers\RideCoordinatesController;
+
+    Route::post('/rides/{rideId}/coordinates',[RideCoordinatesController::class,'store']);
